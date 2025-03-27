@@ -13,7 +13,7 @@ cmake g++ OpenMP Boost
 ### Compile
 
 ```
-cd FastKCNA/src
+cd code
 cmake .
 make
 ```
@@ -21,20 +21,10 @@ make
 ## Usage
 
 ```
-./fastnsg --data yourdatapath.lshkit -K 500 -L 500 -S 12 -R 100 -I 6 --search_L 80 --nsg_R 50 --search_K 500 --massq_S 10 --loop_i 2 --step 10 --angle 60 --output ./fastnsg.index --result ./fastnsg.csv
+./build_index -data_path datapath.lshkit -index_path indexpath.fastnsg -log_path logpath.csv -K 500 -L 500 -S 12 -R 100 -iter 6 -search_L 80 -nsg_R 50 -search_K 500 -step 10 -loop_i 2 -alpha 60 -tau 0 -pg_type 1
 ```
 
-```
-./fasthnsw --data yourdatapath.lshkit -K 200 -L 200 -S 10 -R 100 -I 6 --search_L 40 --nsg_R 40 --search_K 200 --massq_S 10 --loop_i 2 --step 10 --angle 60 --output ./fasthnsw.index --result ./fasthnsw.csv
-```
-
-```
-./fasttaumng --data yourdatapath.lshkit -K 500 -L 500 -S 12 -R 100 -I 6 --search_L 80 --nsg_R 50 --search_K 500 --massq_S 10 --tau 10 --loop_i 2 --step 10 --angle 60 --output ./fasttaumng.index --result ./fasttaumng.csv
-```
-
-```
-./fastnsw --data yourdatapath.lshkit -K 200 -L 200 -S 10 -R 100 -I 6 --search_L 40 --nsg_R 40 --search_K 200 --massq_S 10 --loop_i 2 --step 10 --angle 60 --output ./fastnsw.index --result ./fastnsw.csv
-```
+-pg_type: 0(KNNG); 1(NSG); 2(HNSW); 3($\tau$-MNG); 4(NSW); 5($\alpha$-PG)
 
 Note : You can use fvec2lshkit.cpp to convert fvec format data into lshkit format data. In FastHNSW, nsg_R has the same effect as M in the original HNSW.
 
